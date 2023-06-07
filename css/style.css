@@ -153,9 +153,11 @@ ul li a {
 
 /* pseudo-selector */
 ul li a:hover {
+  --angle: 0deg;
   background: var(--surface-color-hover);
   border: 1.5px solid var(--text-color);
-  animation: pulsate 3s ease-in-out infinite;
+  border-image: linear-gradient(var(--angle), darkviolet, black, darkgray) 1;
+  animation: 1.5s rotate linear infinite;
 }
 
 /* social links */
@@ -222,4 +224,16 @@ footer {
   75% {
     box-shadow: 0 0 25px violet, 0 0 25px black;
   }
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
